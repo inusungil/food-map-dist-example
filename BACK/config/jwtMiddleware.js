@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const secret_config = require("./secret");
+
 const jwtMiddleware = function (req, res, next) {
   // read the token from header or url
   const token = req.headers["x-access-token"] || req.query.token;
@@ -15,7 +16,7 @@ const jwtMiddleware = function (req, res, next) {
   try {
     const verifiedToken = jwt.verify(token, secret_config.jwtsecret);
     req.verifiedToken = verifiedToken;
-    next();
+    next();                                     // 콜백함수가 이상없으면 다음 콜백함수로 넘어간다
   } catch {
     res.status(403).json({
       isSuccess: false,

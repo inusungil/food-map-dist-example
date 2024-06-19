@@ -41,7 +41,10 @@ async function getDataSet(category){
 	
 	const dataSet = await axios({
 		method: "get",    //http method
-		url: `http://3.34.219.122:3000/restaurants?category=${qs}`,
+		//url: `http://127.0.0.1:5500/restaurants?category=${qs}`,
+		//url: `http://3.34.219.122:3000/restaurants?category=${qs}`,
+		url: `https://www.inuinu.shop/restaurants?category=${qs}`,  //리버스프록시 이후에 변경
+		
 		headers: {},      // packet header
 		data: {},         // packet body
 
